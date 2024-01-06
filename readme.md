@@ -1,41 +1,61 @@
-# Green-House Monitoring System
-
-Welcome to Green-House, a comprehensive plant monitoring system designed to bring the spirit of nature into your home! Inspired by the efficiency of ninja services, Green-House ensures your plants receive optimal care.
+# Naruto Plant Monitoring System
 
 ## Overview
 
-Green-House is a monorepo comprising several services for decentralized plant monitoring. Each service has a specific role, contributing to a seamless and robust gardening experience.
+This README outlines a simplified architecture inspired by Naruto characters to create an efficient and lightweight solution for monitoring the well-being of plants. The system comprises various components, each named after a Naruto character, reflecting their roles in ensuring the health of the plants.
 
-### Services
+## Components
 
-1. **ESP8266 Module (Shikamaru):**
-   - Responsible for local soil moisture monitoring for each plant.
-   - Sends data to the central server for processing.
+### 1. Shikamaru - ESP8266 Module with LM393
 
-2. **Clojure Webhook (Jiraiya):**
-   - Processes data from ESP8266 modules.
-   - Triggers notifications based on soil moisture levels.
-   - Central component for managing plant data.
+- The "Shikamaru" module is attached to each plant, monitoring soil moisture levels.
+- When moisture reaches a critical level, "Shikamaru" initiates a POST request to signal the need for attention.
 
-3. **Python Notification App (Tsunade):**
-   - Listens to notifications triggered by Jiraiya.
-   - Sends notifications to Telegram.
-   - Periodically checks the plant status in the local database.
+### 2. Jiraiya - Clojure Webhook
 
-4. **Local Database (Sakura):**
-   - Stores and manages plant states and watering events.
-   - Accessed by Tsunade for notification decisions.
+- "Jiraiya" serves as a robust Clojure-based Webhook server, managing incoming POST requests from the ESP8266 modules.
+- It processes humidity data and triggers notifications as required.
 
-5. **Security and Resilience Service (Kakashi):**
-   - Implements basic security checks for incoming data.
-   - Provides a simple retry mechanism for notification delivery.
+### 3. Tsunade - Python Notification Application
 
-## Getting Started
+- Named after strength and swiftness, "Tsunade" listens to "Jiraiya" and sends notifications to Telegram.
+- The application periodically checks the plant status stored in the local database.
 
-Follow these steps to set up Green-House on your system:
+### 4. Sakura - Local Database
 
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/your-username/Green-House.git
-   cd Green-House
+- "Sakura" functions as a local database, symbolizing care and record-keeping, storing plant states and watering events.
+- "Tsunade" queries this database to determine the necessity for notifications.
+
+### 5. Kakashi - Security and Resilience
+
+- Basic security measures, inspired by "Kakashi's" wisdom, are implemented to validate received data.
+- For resilience, an exponential retry mechanism ensures the reliable delivery of notifications.
+
+## Stories and Definition of Done (DoD)
+
+### 1. Configuration of ESP8266 with LM393
+
+- **DoD:** Each "Shikamaru" is connected to the LM393 module and efficiently monitors soil moisture.
+
+### 2. Development of Clojure Webhook (Jiraiya)
+
+- **DoD:** "Jiraiya" can receive POST requests, process data, and trigger notifications as needed.
+
+### 3. Simple Implementation of Python Notification Application (Tsunade)
+
+- **DoD:** "Tsunade" can listen to "Jiraiya" and send notifications to Telegram based on local database data.
+
+### 4. Local Database (Sakura)
+
+- **DoD:** A local database "Sakura" is set up to store the state of plants and watering events.
+
+### 5. Basic Tests
+
+- **DoD:** Basic tests are conducted to ensure communication between components is working correctly.
+
+### 6. Simple Documentation
+
+- **DoD:** Minimal documentation includes setup and basic operation instructions for the system.
+
+This Naruto-inspired plant monitoring system offers a seamless blend of technology and the ninja spirit, ensuring the well-being of your plants with efficiency and style.
 
